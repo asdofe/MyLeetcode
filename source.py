@@ -1,19 +1,10 @@
 class Solution(object):
-    
-    def nim_game(self,n):
-        # 如果除4餘0就表示必輸
-        if n%4 == 0:
-            return False
-        else :
-            return True
-        
-        
-    
-    
-    def canWinNim(self, n):
+    def addDigits(self, num):
         """
-        :type n: int
-        :rtype: bool
+        :type num: int
+        :rtype: int
         """
-        
-        return self.nim_game(n)
+        # num 除9餘 0 則 num = 0 則答案是0
+                       # num != 0 則答案是9
+        # num 除9不餘0 則 num除9餘數即為所求
+        return num%9 if num%9 != 0 else( 0 if num == 0 else 9)
