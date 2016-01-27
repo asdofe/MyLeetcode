@@ -1,16 +1,21 @@
-# Definition for singly-linked list.
-# class ListNode(object):
+# Definition for a binary tree node.
+# class TreeNode(object):
 #     def __init__(self, x):
 #         self.val = x
-#         self.next = None
+#         self.left = None
+#         self.right = None
 
 class Solution(object):
-    def deleteNode(self, node):
+    def invertTree(self, root):
         """
-        :type node: ListNode
-        :rtype: void Do not return anything, modify node in-place instead.
+        :type root: TreeNode
+        :rtype: TreeNode
         """
-        # 把自己的下一個節點拉過來取代自己
-        # 意義上就是把下一個節點幹掉的意思
-        node.val = node.next.val
-        node.next = node.next.next
+        # 如果root有東西的或者是root的左子樹或右子樹的其中一個有東西
+        # 則把他的左右子樹對調
+        # 然後再把左子樹和右子樹分別當root去做invert的動作
+        if root and (root.left or root.right):
+            root.left, root.right = root.right, root.left
+            self.invertTree(root.left)
+            self.invertTree(root.right)
+        return root
