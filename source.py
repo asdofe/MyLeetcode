@@ -1,21 +1,26 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution(object):
-    def invertTree(self, root):
+    def moveZeroes(self, nums):
         """
-        :type root: TreeNode
-        :rtype: TreeNode
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
         """
-        # 如果root有東西的或者是root的左子樹或右子樹的其中一個有東西
-        # 則把他的左右子樹對調
-        # 然後再把左子樹和右子樹分別當root去做invert的動作
-        if root and (root.left or root.right):
-            root.left, root.right = root.right, root.left
-            self.invertTree(root.left)
-            self.invertTree(root.right)
-        return root
+        non_zero = 0
+        zero = 0
+        # 迴圈終點
+        while non_zero < len(nums) and zero < len(nums):
+            # 找到第1個0的位置
+            while zero < len(nums) and nums[zero] != 0:
+                zero += 1
+                
+            non_zero = zero + 1
+            # 找到第1個非0的位置
+            while non_zero < len(nums) and nums[non_zero] == 0:
+                non_zero += 1
+            # 互換位置
+            if zero < len(nums) and non_zero < len(nums):
+                nums[zero], nums[non_zero] = nums[non_zero], nums[zero] 
+            
+            # 下一個尋找的起始點
+            zero += 1
+            
+            
