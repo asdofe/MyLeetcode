@@ -22,3 +22,5 @@ class Solution(object):
             
             # 下一個尋找的起始點
             zero += 1
+            
+            
