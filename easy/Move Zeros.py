@@ -26,7 +26,7 @@ class Solution(object):
             # 下一個尋找的起始點
             zero += 1
 
-        def solutino2(self, nums):
+        def solution2(self, nums):
             zero_counter = 0
             i = 0
             while i < len(nums)-zero_counter:
